@@ -1,0 +1,546 @@
+{
+	"info": {
+		"_postman_id": "point-api-collection",
+		"name": "Point API",
+		"description": "포인트 적립/사용/취소 API 컬렉션",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "memberId",
+			"value": "1",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Points",
+			"item": [
+				{
+					"name": "포인트 적립",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"memberId\": 1,\n    \"amount\": 1000,\n    \"manual\": false,\n    \"expiryDays\": 365\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/points/earn",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "points", "earn"]
+						},
+						"description": "포인트를 적립합니다.\n\n- memberId: 회원 ID (필수)\n- amount: 적립 금액 (필수, 양수)\n- manual: 수기 지급 여부 (기본값: false)\n- expiryDays: 만료일 (선택, 미입력시 기본값 사용)"
+					},
+					"response": []
+				},
+				{
+					"name": "포인트 적립 (수기 지급)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"memberId\": 1,\n    \"amount\": 500,\n    \"manual\": true\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/points/earn",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "points", "earn"]
+						},
+						"description": "수기로 포인트를 지급합니다. 수기 지급 포인트는 사용 시 우선 차감됩니다."
+					},
+					"response": []
+				},
+				{
+					"name": "적립 취소",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pointKey\": \"적립시 받은 pointKey\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/points/earn/cancel",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "points", "earn", "cancel"]
+						},
+						"description": "적립을 취소합니다.\n\n- pointKey: 적립 시 발급된 포인트 키 (필수)\n\n주의: 일부라도 사용된 포인트는 적립 취소할 수 없습니다."
+					},
+					"response": []
+				},
+				{
+					"name": "포인트 사용",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"memberId\": 1,\n    \"amount\": 500,\n    \"orderId\": \"ORDER001\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/points/use",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "points", "use"]
+						},
+						"description": "포인트를 사용합니다.\n\n- memberId: 회원 ID (필수)\n- amount: 사용 금액 (필수, 양수)\n- orderId: 주문번호 (필수)\n\n사용 우선순위:\n1. 수기 지급 포인트\n2. 만료일이 빠른 포인트"
+					},
+					"response": []
+				},
+				{
+					"name": "사용 취소 (전체)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pointKey\": \"사용시 받은 pointKey\",\n    \"amount\": 500\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/points/use/cancel",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "points", "use", "cancel"]
+						},
+						"description": "포인트 사용을 취소합니다.\n\n- pointKey: 사용 시 발급된 포인트 키 (필수)\n- amount: 취소 금액 (필수, 양수)\n\n주의:\n- 원래 포인트가 만료된 경우 새로운 포인트가 생성됩니다.\n- 부분 취소도 가능합니다."
+					},
+					"response": []
+				},
+				{
+					"name": "사용 취소 (부분)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pointKey\": \"사용시 받은 pointKey\",\n    \"amount\": 200\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/points/use/cancel",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "points", "use", "cancel"]
+						},
+						"description": "포인트 사용을 부분 취소합니다."
+					},
+					"response": []
+				},
+				{
+					"name": "잔액 조회",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/points/balance/{{memberId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "points", "balance", "{{memberId}}"]
+						},
+						"description": "회원의 포인트 잔액을 조회합니다.\n\n응답에는 총 잔액과 각 포인트 건별 상세 정보가 포함됩니다."
+					},
+					"response": []
+				},
+				{
+					"name": "거래 내역 조회",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/points/transactions/{{memberId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "points", "transactions", "{{memberId}}"]
+						},
+						"description": "회원의 포인트 거래 내역을 조회합니다.\n\n거래 유형: EARN, EARN_CANCEL, USE, USE_CANCEL"
+					},
+					"response": []
+				}
+			],
+			"description": "포인트 적립/사용/취소 관련 API"
+		},
+		{
+			"name": "Config",
+			"item": [
+				{
+					"name": "설정 전체 조회",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/configs",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "configs"]
+						},
+						"description": "포인트 시스템 설정을 조회합니다.\n\n설정 항목:\n- MIN_EARN_AMOUNT: 최소 적립 금액\n- MAX_EARN_AMOUNT: 최대 적립 금액\n- DEFAULT_EXPIRY_DAYS: 기본 만료일\n- MIN_EXPIRY_DAYS: 최소 만료일\n- MAX_EXPIRY_DAYS: 최대 만료일\n- MAX_BALANCE_PER_MEMBER: 회원당 최대 보유 가능 금액"
+					},
+					"response": []
+				},
+				{
+					"name": "설정 수정",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"value\": \"365\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/configs/DEFAULT_EXPIRY_DAYS",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "configs", "DEFAULT_EXPIRY_DAYS"]
+						},
+						"description": "포인트 시스템 설정을 수정합니다.\n\n수정 가능한 키:\n- MIN_EARN_AMOUNT\n- MAX_EARN_AMOUNT\n- DEFAULT_EXPIRY_DAYS\n- MIN_EXPIRY_DAYS\n- MAX_EXPIRY_DAYS\n- MAX_BALANCE_PER_MEMBER"
+					},
+					"response": []
+				}
+			],
+			"description": "포인트 시스템 설정 관련 API"
+		},
+		{
+			"name": "Scenarios",
+			"item": [
+				{
+					"name": "시나리오 1: 적립 후 사용",
+					"item": [
+						{
+							"name": "1. 1000원 적립",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"memberId\": 1,\n    \"amount\": 1000,\n    \"manual\": false\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/points/earn",
+									"host": ["{{baseUrl}}"],
+									"path": ["api", "v1", "points", "earn"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. 500원 적립",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"memberId\": 1,\n    \"amount\": 500,\n    \"manual\": false\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/points/earn",
+									"host": ["{{baseUrl}}"],
+									"path": ["api", "v1", "points", "earn"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3. 잔액 확인 (1500원)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/points/balance/1",
+									"host": ["{{baseUrl}}"],
+									"path": ["api", "v1", "points", "balance", "1"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4. 1200원 사용",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"memberId\": 1,\n    \"amount\": 1200,\n    \"orderId\": \"ORDER-001\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/points/use",
+									"host": ["{{baseUrl}}"],
+									"path": ["api", "v1", "points", "use"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5. 잔액 확인 (300원)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/points/balance/1",
+									"host": ["{{baseUrl}}"],
+									"path": ["api", "v1", "points", "balance", "1"]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "기본적인 적립 후 사용 시나리오"
+				},
+				{
+					"name": "시나리오 2: 수기 지급 우선 사용",
+					"item": [
+						{
+							"name": "1. 일반 적립 1000원",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"memberId\": 2,\n    \"amount\": 1000,\n    \"manual\": false\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/points/earn",
+									"host": ["{{baseUrl}}"],
+									"path": ["api", "v1", "points", "earn"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. 수기 지급 500원",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"memberId\": 2,\n    \"amount\": 500,\n    \"manual\": true\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/points/earn",
+									"host": ["{{baseUrl}}"],
+									"path": ["api", "v1", "points", "earn"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3. 700원 사용 (수기 500 + 일반 200)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"memberId\": 2,\n    \"amount\": 700,\n    \"orderId\": \"ORDER-002\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/points/use",
+									"host": ["{{baseUrl}}"],
+									"path": ["api", "v1", "points", "use"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4. 잔액 확인 (800원)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/points/balance/2",
+									"host": ["{{baseUrl}}"],
+									"path": ["api", "v1", "points", "balance", "2"]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "수기 지급 포인트가 먼저 사용되는지 확인하는 시나리오"
+				},
+				{
+					"name": "시나리오 3: 사용 취소",
+					"item": [
+						{
+							"name": "1. 1000원 적립",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"memberId\": 3,\n    \"amount\": 1000,\n    \"manual\": false\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/points/earn",
+									"host": ["{{baseUrl}}"],
+									"path": ["api", "v1", "points", "earn"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. 500원 사용",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"memberId\": 3,\n    \"amount\": 500,\n    \"orderId\": \"ORDER-003\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/points/use",
+									"host": ["{{baseUrl}}"],
+									"path": ["api", "v1", "points", "use"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3. 300원 부분 취소",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"pointKey\": \"사용시 받은 pointKey를 입력하세요\",\n    \"amount\": 300\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/points/use/cancel",
+									"host": ["{{baseUrl}}"],
+									"path": ["api", "v1", "points", "use", "cancel"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4. 잔액 확인 (800원)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/points/balance/3",
+									"host": ["{{baseUrl}}"],
+									"path": ["api", "v1", "points", "balance", "3"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5. 나머지 200원 취소",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"pointKey\": \"사용시 받은 pointKey를 입력하세요\",\n    \"amount\": 200\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/points/use/cancel",
+									"host": ["{{baseUrl}}"],
+									"path": ["api", "v1", "points", "use", "cancel"]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "6. 잔액 확인 (1000원)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/points/balance/3",
+									"host": ["{{baseUrl}}"],
+									"path": ["api", "v1", "points", "balance", "3"]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "포인트 사용 후 부분 취소 시나리오"
+				}
+			],
+			"description": "테스트 시나리오 모음"
+		}
+	]
+}

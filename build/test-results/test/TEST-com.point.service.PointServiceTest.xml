@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.point.service.PointServiceTest" tests="0" skipped="0" failures="0" errors="0" timestamp="1970-01-01T00:00:00" hostname="hskim.local" time="0.0">
+  <properties/>
+  <system-out><![CDATA[2026-01-10T14:44:20.651+09:00  INFO 65153 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.point.service.PointServiceTest]: PointServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-01-10T14:44:20.656+09:00  INFO 65153 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.point.PointApplication for test class com.point.service.PointServiceTest
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

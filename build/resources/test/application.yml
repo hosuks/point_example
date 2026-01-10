@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+
+point:
+  max-earn-amount: 100000
+  min-earn-amount: 1
+  max-balance-per-member: 1000000
+  default-expiry-days: 365
+  min-expiry-days: 1
+  max-expiry-days: 1825

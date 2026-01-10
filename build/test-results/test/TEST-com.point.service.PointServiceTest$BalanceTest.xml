@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="잔액 조회 테스트" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-01-10T05:44:20" hostname="hskim.local" time="0.092">
+  <properties/>
+  <testcase name="잔액 상세 정보를 조회한다" classname="com.point.service.PointServiceTest$BalanceTest" time="0.092"/>
+  <system-out><![CDATA[2026-01-10T14:44:20.659+09:00  INFO 65153 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.point.service.PointServiceTest$BalanceTest]: BalanceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-01-10T14:44:20.660+09:00  INFO 65153 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.point.PointApplication for test class com.point.service.PointServiceTest$BalanceTest
+2026-01-10T14:44:20.691+09:00  INFO 65153 --- [    Test worker] com.point.service.PointService           : Point earned: pointKey=CE37744F, memberId=1, amount=1000, manual=false, expirationDate=2027-01-10T14:44:20.684549
+2026-01-10T14:44:20.702+09:00  INFO 65153 --- [    Test worker] com.point.service.PointService           : Point earned: pointKey=4D7D6FA1, memberId=1, amount=500, manual=true, expirationDate=2027-01-10T14:44:20.701751
+2026-01-10T14:44:20.749+09:00  INFO 65153 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10T14:44:20.753+09:00  INFO 65153 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-10T14:44:20.754+09:00  INFO 65153 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

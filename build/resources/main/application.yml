@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: point-service
+
+  datasource:
+    url: jdbc:h2:file:./data/pointdb;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+
+server:
+  port: 8080
+
+# Point Configuration (can be modified without code change)
+point:
+  max-earn-amount: 100000          # 1회 최대 적립 가능 포인트
+  min-earn-amount: 1               # 1회 최소 적립 가능 포인트
+  max-balance-per-member: 1000000  # 개인별 최대 보유 가능 포인트
+  default-expiry-days: 365         # 기본 만료일 (일)
+  min-expiry-days: 1               # 최소 만료일 (일)
+  max-expiry-days: 1825            # 최대 만료일 (5년 미만 = 1825일)

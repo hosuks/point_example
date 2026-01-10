@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - 사용 테스트</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>사용 테스트</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.point.service.html">com.point.service</a> &gt; PointServiceTest$UseTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">4</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.096s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">잔액 부족시 예외가 발생한다</td>
+<td class="success">insufficientBalance()</td>
+<td class="success">0.018s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">수기 지급 포인트가 우선 사용된다</td>
+<td class="success">manualPointUsedFirst()</td>
+<td class="success">0.038s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">정상적으로 포인트를 사용한다</td>
+<td class="success">useSuccess()</td>
+<td class="success">0.022s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">주문번호 없이 사용하면 예외가 발생한다</td>
+<td class="success">useWithoutOrderId()</td>
+<td class="success">0.018s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2026-01-10T14:44:22.025+09:00  INFO 65153 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.point.service.PointServiceTest$UseTest]: UseTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-01-10T14:44:22.026+09:00  INFO 65153 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.point.PointApplication for test class com.point.service.PointServiceTest$UseTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.1)
+
+2026-01-10T14:44:22.038+09:00  INFO 65153 --- [    Test worker] com.point.service.PointServiceTest       : Starting PointServiceTest using Java 20.0.2 with PID 65153 (started by kimhoseok in /Users/kimhoseok/workspace/point)
+2026-01-10T14:44:22.038+09:00  INFO 65153 --- [    Test worker] com.point.service.PointServiceTest       : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2026-01-10T14:44:22.090+09:00  INFO 65153 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-10T14:44:22.094+09:00  INFO 65153 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 4 JPA repository interfaces.
+2026-01-10T14:44:22.116+09:00  INFO 65153 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-10T14:44:22.121+09:00  INFO 65153 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-01-10T14:44:22.123+09:00  INFO 65153 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-10T14:44:22.123+09:00  INFO 65153 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2026-01-10T14:44:22.124+09:00  INFO 65153 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection conn42: url=jdbc:h2:mem:testdb user=SA
+2026-01-10T14:44:22.124+09:00  INFO 65153 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2026-01-10T14:44:22.152+09:00  INFO 65153 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-10T14:44:22.156+09:00  INFO 65153 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10T14:44:22.221+09:00  WARN 65153 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-10T14:44:22.253+09:00  INFO 65153 --- [    Test worker] com.point.service.PointServiceTest       : Started PointServiceTest in 0.224 seconds (process running for 5.212)
+2026-01-10T14:44:22.263+09:00  INFO 65153 --- [    Test worker] com.point.service.PointService           : Point earned: pointKey=E49271B8, memberId=1, amount=1000, manual=false, expirationDate=2027-01-10T14:44:22.261788
+2026-01-10T14:44:22.269+09:00  INFO 65153 --- [    Test worker] com.point.service.PointService           : Point earned: pointKey=07C7AB2A, memberId=1, amount=500, manual=true, expirationDate=2027-01-10T14:44:22.268556
+2026-01-10T14:44:22.275+09:00  INFO 65153 --- [    Test worker] com.point.service.PointService           : Point used: pointKey=180B6FFA, memberId=1, amount=700, orderId=ORDER001
+2026-01-10T14:44:22.279+09:00  INFO 65153 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10T14:44:22.280+09:00  INFO 65153 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2026-01-10T14:44:22.293+09:00  INFO 65153 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.1)
+
+2026-01-10T14:44:22.303+09:00  INFO 65153 --- [    Test worker] com.point.service.PointServiceTest       : Starting PointServiceTest using Java 20.0.2 with PID 65153 (started by kimhoseok in /Users/kimhoseok/workspace/point)
+2026-01-10T14:44:22.303+09:00  INFO 65153 --- [    Test worker] com.point.service.PointServiceTest       : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2026-01-10T14:44:22.357+09:00  INFO 65153 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-10T14:44:22.362+09:00  INFO 65153 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 4 JPA repository interfaces.
+2026-01-10T14:44:22.385+09:00  INFO 65153 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-10T14:44:22.385+09:00  INFO 65153 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-01-10T14:44:22.387+09:00  INFO 65153 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-10T14:44:22.387+09:00  INFO 65153 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2026-01-10T14:44:22.388+09:00  INFO 65153 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Added connection conn48: url=jdbc:h2:mem:testdb user=SA
+2026-01-10T14:44:22.388+09:00  INFO 65153 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2026-01-10T14:44:22.416+09:00  INFO 65153 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-10T14:44:22.420+09:00  INFO 65153 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10T14:44:22.480+09:00  WARN 65153 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-10T14:44:22.510+09:00  INFO 65153 --- [    Test worker] com.point.service.PointServiceTest       : Started PointServiceTest in 0.216 seconds (process running for 5.469)
+2026-01-10T14:44:22.519+09:00  INFO 65153 --- [    Test worker] com.point.service.PointService           : Point earned: pointKey=EEEA71A3, memberId=1, amount=1000, manual=false, expirationDate=2027-01-10T14:44:22.517227
+2026-01-10T14:44:22.523+09:00  INFO 65153 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10T14:44:22.524+09:00  INFO 65153 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2026-01-10T14:44:22.529+09:00  INFO 65153 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.1)
+
+2026-01-10T14:44:22.539+09:00  INFO 65153 --- [    Test worker] com.point.service.PointServiceTest       : Starting PointServiceTest using Java 20.0.2 with PID 65153 (started by kimhoseok in /Users/kimhoseok/workspace/point)
+2026-01-10T14:44:22.539+09:00  INFO 65153 --- [    Test worker] com.point.service.PointServiceTest       : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2026-01-10T14:44:22.597+09:00  INFO 65153 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-10T14:44:22.605+09:00  INFO 65153 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 4 JPA repository interfaces.
+2026-01-10T14:44:22.630+09:00  INFO 65153 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-10T14:44:22.631+09:00  INFO 65153 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-01-10T14:44:22.632+09:00  INFO 65153 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-10T14:44:22.633+09:00  INFO 65153 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2026-01-10T14:44:22.633+09:00  INFO 65153 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-8 - Added connection conn52: url=jdbc:h2:mem:testdb user=SA
+2026-01-10T14:44:22.633+09:00  INFO 65153 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2026-01-10T14:44:22.662+09:00  INFO 65153 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-10T14:44:22.665+09:00  INFO 65153 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10T14:44:22.721+09:00  WARN 65153 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-10T14:44:22.749+09:00  INFO 65153 --- [    Test worker] com.point.service.PointServiceTest       : Started PointServiceTest in 0.218 seconds (process running for 5.707)
+2026-01-10T14:44:22.758+09:00  INFO 65153 --- [    Test worker] com.point.service.PointService           : Point earned: pointKey=0D14BD20, memberId=1, amount=1000, manual=false, expirationDate=2027-01-10T14:44:22.756840
+2026-01-10T14:44:22.763+09:00  INFO 65153 --- [    Test worker] com.point.service.PointService           : Point used: pointKey=65647936, memberId=1, amount=500, orderId=ORDER001
+2026-01-10T14:44:22.768+09:00  INFO 65153 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10T14:44:22.769+09:00  INFO 65153 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown initiated...
+2026-01-10T14:44:22.771+09:00  INFO 65153 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.1)
+
+2026-01-10T14:44:22.782+09:00  INFO 65153 --- [    Test worker] com.point.service.PointServiceTest       : Starting PointServiceTest using Java 20.0.2 with PID 65153 (started by kimhoseok in /Users/kimhoseok/workspace/point)
+2026-01-10T14:44:22.782+09:00  INFO 65153 --- [    Test worker] com.point.service.PointServiceTest       : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2026-01-10T14:44:22.829+09:00  INFO 65153 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-10T14:44:22.834+09:00  INFO 65153 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 4 JPA repository interfaces.
+2026-01-10T14:44:22.856+09:00  INFO 65153 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-10T14:44:22.857+09:00  INFO 65153 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-01-10T14:44:22.858+09:00  INFO 65153 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-10T14:44:22.859+09:00  INFO 65153 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Starting...
+2026-01-10T14:44:22.859+09:00  INFO 65153 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-9 - Added connection conn56: url=jdbc:h2:mem:testdb user=SA
+2026-01-10T14:44:22.859+09:00  INFO 65153 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Start completed.
+2026-01-10T14:44:22.885+09:00  INFO 65153 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-10T14:44:22.889+09:00  INFO 65153 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10T14:44:22.947+09:00  WARN 65153 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-10T14:44:22.983+09:00  INFO 65153 --- [    Test worker] com.point.service.PointServiceTest       : Started PointServiceTest in 0.21 seconds (process running for 5.942)
+2026-01-10T14:44:22.995+09:00  INFO 65153 --- [    Test worker] com.point.service.PointService           : Point earned: pointKey=E9901690, memberId=1, amount=1000, manual=false, expirationDate=2027-01-10T14:44:22.992820
+2026-01-10T14:44:22.999+09:00  INFO 65153 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10T14:44:23.000+09:00  INFO 65153 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown initiated...
+2026-01-10T14:44:23.002+09:00  INFO 65153 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown completed.
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 8.5</a> at 2026. 1. 10. 오후 2:44:24</p>
+</div>
+</div>
+</body>
+</html>
