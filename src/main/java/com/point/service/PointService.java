@@ -54,7 +54,7 @@ public class PointService {
                 .earnTransactionId(transaction.getId())
                 .build();
 
-        point = pointRepository.save(point);
+        pointRepository.save(point);
 
         log.info("Point earned: pointKey={}, memberId={}, amount={}, manual={}, expirationDate={}",
                 transaction.getPointKey(), request.getMemberId(), request.getAmount(),
